@@ -85,6 +85,25 @@ body {
     width: 100%;
 }
 
+.header__hamburger {
+	display: none;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 24px;
+	height: 18px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	z-index: 1100;
+}
+
+.header__hamburger span {
+	display: block;
+	height: 2px;
+	background: var(--text-main);
+	border-radius: 2px;
+}
+
 .hero {
     height: 100vh;
     display: flex;
@@ -365,6 +384,16 @@ body {
 		line-height: 1.5;
 	}
 
+    .header__hamburger {
+        display: flex;
+    }
+	.header__nav {
+		display: none;
+	}
+	.header__nav.is-open {
+		display: flex;
+	}
+
 	.header {
 		padding: 16px 20px;
 	}
@@ -378,16 +407,15 @@ body {
 		font-size: 13px;
 	}
 
-	/* -------------------- 모바일 히어로 패치 -------------------- */
 	.hero, .hero--with-bg {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		text-align: center;
 		padding: 0 20px;
-		height: 100vh; /* 화면 꽉 채우기 */
-		background-size: cover; /* 배경 이미지 꽉 차게 */
-		background-position: center; /* 중앙 기준 */
+		height: 100vh;
+		background-size: cover;
+		background-position: center;
 		position: relative;
 	}
 
@@ -431,8 +459,6 @@ body {
 		background: rgba(255, 248, 240, 0.55);
 		backdrop-filter: blur(6px);
 	}
-
-	/* ------------------------------------------------------------ */
 
 	.stats {
 		flex-direction: column;
