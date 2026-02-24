@@ -24,9 +24,9 @@ soundToggle.addEventListener("click", () => {
 		}
 });
 
-trigger.addEventListener('click', () => {
-    trigger.classList.toggle('active');
-    nav.classList.toggle('is-open');
+document.querySelector('.menu-trigger').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.querySelector('.header__nav').classList.toggle('is-open');
 });
 
 noticeButton.addEventListener("click", () => {
