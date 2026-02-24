@@ -378,37 +378,61 @@ body {
 		font-size: 13px;
 	}
 
-	.hero {
+	/* -------------------- 모바일 히어로 패치 -------------------- */
+	.hero, .hero--with-bg {
 		flex-direction: column;
 		justify-content: center;
+		align-items: center;
 		text-align: center;
-		padding: 60px 20px;
-		height: auto;
+		padding: 0 20px;
+		height: 100vh; /* 화면 꽉 채우기 */
+		background-size: cover; /* 배경 이미지 꽉 차게 */
+		background-position: center; /* 중앙 기준 */
+		position: relative;
 	}
+
+	.hero__content {
+		max-width: 100%;
+		z-index: 1;
+	}
+
 	.hero h1 {
 		font-size: 28px;
 		margin-bottom: 16px;
 	}
+
 	.hero p {
 		font-size: 14px;
 		margin-bottom: 24px;
 	}
+
 	.hero__buttons {
 		flex-direction: column;
 		gap: 12px;
 		justify-content: center;
 		align-items: center;
 	}
+
 	.hero__eyebrow {
 		font-size: 12px;
 		margin-bottom: 12px;
 	}
+
 	.hero__notice {
 		flex-direction: column;
 		gap: 8px;
 		font-size: 12px;
 		margin-top: 24px;
 	}
+
+	.hero__overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(255, 248, 240, 0.55);
+		backdrop-filter: blur(6px);
+	}
+
+	/* ------------------------------------------------------------ */
 
 	.stats {
 		flex-direction: column;
