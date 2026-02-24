@@ -313,13 +313,13 @@ body {
 }
 
 .outlet-info__title .subtitle {
-    font-size: 14px;
+    font-size: 16px;
     color: #666;
     margin-bottom: 50px;
 }
 
 .outlet-info__status h2 {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 600;
     margin-bottom: 5px;
 }
@@ -343,15 +343,15 @@ body {
 
 .outlet-info__table th, 
 .outlet-info__table td {
-    padding: 8px 0;
-    font-size: 14px;
+    padding: 10px 0;
+    font-size: 16px;
     text-align: left;
 }
 
 .outlet-info__table th {
-    width: 100px;
-    font-weight: 500;
-    color: #333;
+    width: 120px;
+    font-weight: 600;
+    color: #222;
 }
 
 .outlet-info__table td {
@@ -360,7 +360,7 @@ body {
 }
 
 .bot-notice {
-    font-size: 12px;
+    font-size: 14px;
     color: #999;
 }
 
