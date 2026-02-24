@@ -43,6 +43,18 @@ body { font-family:"Pretendard", "Noto Sans KR", sans-serif; background:var(--bg
 /* 푸터 */
 .footer { padding:60px 100px; border-top:1px solid #eeeeee; font-size:13px; color:var(--text-sub); text-align:center; }
 
+.hero__sound {
+	margin-top: 40px;
+	font-size: 12px;
+	letter-spacing: 2px;
+	opacity: 0.5;
+	cursor: pointer;
+}
+
+.sound-toggle:hover {
+    opacity: 1;
+}
+
 /* 반응형 */
 @media(max-width:768px){
 	.header { padding:16px 20px; }
