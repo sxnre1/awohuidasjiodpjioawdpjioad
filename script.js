@@ -94,18 +94,22 @@ if (modalOverlay && modal) {
 
 }
 
-if (menuTrigger && nav && menuOverlay) {
+if (menuTrigger && nav) {
 
     menuTrigger.addEventListener('click', () => {
         menuTrigger.classList.toggle('active');
         nav.classList.toggle('is-open');
-        menuOverlay.classList.toggle('active');
+
+        if (menuOverlay) {
+            menuOverlay.classList.toggle('active');
+        }
     });
 
-    menuOverlay.addEventListener('click', () => {
-        menuTrigger.classList.remove('active');
-        nav.classList.remove('is-open');
-        menuOverlay.classList.remove('active');
-    });
-
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', () => {
+            menuTrigger.classList.remove('active');
+            nav.classList.remove('is-open');
+            menuOverlay.classList.remove('active');
+        });
+    }
 }
