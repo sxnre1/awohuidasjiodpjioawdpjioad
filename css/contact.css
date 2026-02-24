@@ -39,8 +39,19 @@ body { font-family:"Pretendard", "Noto Sans KR", sans-serif; background:var(--bg
 .hero h1 { font-size:52px; font-weight:600; letter-spacing:-1px; margin-bottom:24px; }
 .hero p { font-size:16px; color:var(--text-sub); margin-bottom:40px; line-height:1.7; }
 .hero__buttons { display:flex; gap:14px; justify-content:center; }
-.button { border:1px solid var(--accent); background:transparent; padding:14px 32px; font-size:14px; cursor:pointer; transition:0.25s; margin-top:30px; }
-.button:hover { background:var(--accent); color:white; }
+.button {
+    border: 1px solid var(--accent);
+    background: transparent;
+    padding: 14px 32px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.button:hover {
+    background: var(--accent);
+    color: white;
+}
 .button--primary { background:var(--accent); color:white; }
 .button--primary:hover { background:transparent; color:var(--accent); }
 
