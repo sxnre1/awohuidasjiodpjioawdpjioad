@@ -1,9 +1,9 @@
 :root {
-	--bg-main: #0f0f1f;
-	--bg-soft: #1a1a2e;
-	--text-main: #eeeeee;
-	--text-sub: #bbbbbb;
-	--accent: #00ffff;
+    --bg-main: #ffffff;
+    --bg-soft: #f7f7f7;
+    --text-main: #111111;
+    --text-sub: #666666;
+    --accent: #111111;
 }
 
 * {
