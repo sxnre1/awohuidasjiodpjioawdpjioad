@@ -26,58 +26,83 @@ body { font-family:"Pretendard", "Noto Sans KR", sans-serif; background:var(--bg
 .menu-trigger span { width:100%; height:2px; background-color:var(--text-main); transition:all 0.3s; }
 
 /* 섹션 */
-.section--contact {
-	padding: 120px 100px;
-	background: #f7f7f7;
-	text-align: center;
+.section--contact,
+.hero--with-bg.contact-hero {
+    position: relative;
+    height: 90vh;
+    background-image: url("../images/herobg.webp"); /* 뒤 배경 이미지 */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-.section--contact h1 {
-	font-size: 36px;
-	margin-bottom: 24px;
+.hero--with-bg.contact-hero .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 248, 240, 0.55); /* 오버레이 색상 */
+    backdrop-filter: blur(6px);
 }
 
-.section--contact p {
-	font-size: 16px;
-	color: #666;
-	margin-bottom: 40px;
-	line-height: 1.7;
+.hero--with-bg.contact-hero .hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+    padding: 20px;
 }
 
-.contact__cards {
-	display: flex;
-	justify-content: center;
-	gap: 30px;
-	margin-bottom: 60px;
-	flex-wrap: wrap;
+.hero--with-bg.contact-hero .hero__eyebrow {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--text-sub);
+    margin-bottom: 18px;
+    display: block;
 }
 
-.contact__card {
-	background: white;
-	padding: 30px 20px;
-	box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-	border-radius: 12px;
-	width: 250px;
+.hero--with-bg.contact-hero h1 {
+    font-size: 52px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
 }
 
-.contact__card h3 {
-	font-size: 20px;
-	margin-bottom: 12px;
+.hero--with-bg.contact-hero p {
+    font-size: 16px;
+    color: var(--text-sub);
+    margin-bottom: 40px;
+    line-height: 1.7;
 }
 
-.contact__card p {
-	font-size: 14px;
-	color: #666;
-	margin-bottom: 16px;
+.hero--with-bg.contact-hero .hero__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
 }
 
-.contact__image img {
-	max-width: 500px;
-	width: 100%;
-	border-radius: 12px;
-	box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-	margin: 0 auto;
-	display: block;
+.hero--with-bg.contact-hero .button {
+    border: 1px solid var(--accent);
+    background: transparent;
+    padding: 14px 32px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.hero--with-bg.contact-hero .button:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.hero--with-bg.contact-hero .button--primary {
+    background: var(--accent);
+    color: white;
+}
+
+.hero--with-bg.contact-hero .button--primary:hover {
+    background: transparent;
+    color: var(--accent);
 }
 
 /* 버튼 */
@@ -107,4 +132,17 @@ body { font-family:"Pretendard", "Noto Sans KR", sans-serif; background:var(--bg
 	.section { padding:80px 20px; }
 	.button { width:100%; }
 	.menu-trigger { display:flex; }
+
+	.hero--with-bg.contact-hero h1 {
+        font-size: 32px;
+    }
+
+    .hero--with-bg.contact-hero p {
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+
+    .hero--with-bg.contact-hero .hero__buttons {
+        flex-direction: column;
+    }
 }
