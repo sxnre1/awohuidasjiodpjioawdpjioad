@@ -152,16 +152,6 @@ body {
 	opacity: 1;
 }
 
-.footer {
-	padding: 70px 20px;
-	border-top: 1px solid var(--line-soft);
-	font-size: 12px;
-	color: var(--text-sub);
-	text-align: center;
-	background: #fafafa;
-	line-height: 1.9;
-}
-
 .section,
 .collection__item {
 	animation: fadeUp 0.8s ease;
