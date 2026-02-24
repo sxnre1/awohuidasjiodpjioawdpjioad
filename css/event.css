@@ -203,7 +203,7 @@ body {
 	.collection__grid {
 
 		display: grid;
-		grid-template-columns: 1fr;
+		grid-template-columns: 2fr;
 		gap: 14px;
 
 		max-width: 100%;
