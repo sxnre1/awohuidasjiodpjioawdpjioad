@@ -1,67 +1,110 @@
-body {
-	background-color: #0f0f1f;
-	color: #eee;
-	font-family: 'Verdana', sans-serif;
-	margin: 0;
-	padding: 0;
+:root {
+	--bg-main: #0f0f1f;
+	--bg-soft: #1a1a2e;
+	--text-main: #eeeeee;
+	--text-sub: #bbbbbb;
+	--accent: #00ffff;
 }
 
-/* 헤더 */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Pretendard", "Noto Sans KR", sans-serif;
+	background: var(--bg-main);
+	color: var(--text-main);
+}
+
 .header {
-	background-color: #11112a;
+	position: fixed;
+	width: 100%;
+	padding: 28px 80px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 15px 40px;
-	position: sticky;
-	top: 0;
-	z-index: 100;
-}
-.header__logo {
-	font-size: 1.8rem;
-	font-weight: bold;
-	color: #00ffff;
-}
-.header__nav a {
-	color: #eee;
-	margin-left: 20px;
-	text-decoration: none;
-	font-weight: 500;
-}
-.header__nav a:hover {
-	color: #00ffff;
+	background: rgba(15,15,31,0.85);
+	backdrop-filter: blur(10px);
+	z-index: 1000;
 }
 
-/* 컬렉션 그리드 */
+.header__logo {
+	font-size: 18px;
+	font-weight: 600;
+	letter-spacing: 2px;
+	color: var(--accent);
+}
+
+.header__nav { display: flex; gap: 28px; }
+
+.header__nav a {
+	text-decoration: none;
+	color: var(--text-main);
+	font-size: 14px;
+	position: relative;
+}
+
+.header__nav a::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: -6px;
+	width: 0;
+	height: 1px;
+	background: var(--accent);
+	transition: 0.3s;
+}
+
+.header__nav a:hover::after { width: 100%; }
+
 .section--collection {
-	padding: 60px 20px;
+	padding: 140px 100px;
 	text-align: center;
 }
+
 .collection__grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 	gap: 20px;
-	margin-top: 30px;
-}
-.collection__item {
-	background: #1a1a2e;
-	padding: 30px 10px;
-	border-radius: 12px;
-	font-size: 1.1rem;
-	font-weight: bold;
-	color: #00ffff;
-	transition: transform 0.2s, background 0.2s;
-}
-.collection__item:hover {
-	transform: translateY(-5px);
-	background: #27274d;
+	margin-top: 40px;
 }
 
-/* 푸터 */
+.collection__item {
+	background: var(--bg-soft);
+	padding: 30px 20px;
+	border-radius: 12px;
+	font-size: 15px;
+	font-weight: bold;
+	color: var(--accent);
+	transition: transform 0.2s, background 0.2s;
+	cursor: pointer;
+}
+
+.collection__item:hover {
+	transform: translateY(-5px);
+	background: rgba(26,26,46,0.85);
+}
+
+.section--collection h1 {
+	font-size: 52px;
+	color: var(--accent);
+	margin-bottom: 20px;
+}
+
 .footer {
-	background-color: #11112a;
-	color: #eee;
+	padding: 60px 100px;
+	border-top: 1px solid #222;
+	font-size: 13px;
+	color: var(--text-sub);
 	text-align: center;
-	padding: 20px;
-	font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+	.header { padding: 16px 20px; }
+	.header__logo { font-size: 16px; }
+	.header__nav { flex-direction: column; gap: 20px; }
+	.section--collection { padding: 80px 20px; }
+	.collection__grid { gap: 16px; }
 }
