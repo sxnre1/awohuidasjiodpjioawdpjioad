@@ -59,8 +59,15 @@ body {
 
 .header__nav {
     display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
     gap: 28px;
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    padding: 0;
 }
 
 .header__nav a {
@@ -442,7 +449,6 @@ body {
         width: 75%;
         height: 100vh;
         background: var(--bg-main);
-        display: flex;
         flex-direction: column;
         justify-content: flex-start;
         padding-top: 80px;
