@@ -6,83 +6,106 @@ const noticeButton = document.querySelector(".button--primary");
 const bgm = document.getElementById("bgm");
 const soundToggle = document.querySelector(".sound-toggle");
 
-const menuTrigger = document.getElementById('menu-trigger');
-const nav = document.getElementById('header-nav');
+const menuTrigger = document.querySelector('.menu-trigger');
+const nav = document.querySelector('.header__nav');
 const menuOverlay = document.querySelector('.menu-overlay');
 
 const enterButton = document.getElementById('enterButton');
 
-bgm.volume = 0.07;
 let isPlaying = false;
 
-soundToggle.addEventListener("click", () => {
-		if (!isPlaying) {
-				bgm.play();
-				soundToggle.textContent = "SOUND ON";
-				isPlaying = true;
-		} else {
-				bgm.pause();
-				soundToggle.textContent = "SOUND";
-				isPlaying = false;
-		}
-});
+if (soundToggle && bgm) {
 
-enterButton.addEventListener('click', () => {
+    bgm.volume = 0.07;
 
-    const target = document.querySelector('.outlet-info');
-    const targetPosition = target.offsetTop;
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    const duration = 1200;
+    soundToggle.addEventListener("click", () => {
+        if (!isPlaying) {
+            bgm.play();
+            soundToggle.textContent = "SOUND ON";
+            isPlaying = true;
+        } else {
+            bgm.pause();
+            soundToggle.textContent = "SOUND";
+            isPlaying = false;
+        }
+    });
 
-    let start = null;
+}
 
-    function animation(currentTime) {
+if (enterButton) {
 
-        if (start === null) start = currentTime;
+    enterButton.addEventListener('click', () => {
 
-        const timeElapsed = currentTime - start;
-        const run = ease(timeElapsed, startPosition, distance, duration);
+        const target = document.querySelector('.outlet-info');
+        if (!target) return;
 
-        window.scrollTo(0, run);
+        const targetPosition = target.offsetTop;
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        const duration = 1200;
 
-        if (timeElapsed < duration) requestAnimationFrame(animation);
-    }
+        let start = null;
 
-    function ease(t, b, c, d) {
-        t /= d / 2;
-        if (t < 1) return c / 2 * t * t + b;
-        t--;
-        return -c / 2 * (t * (t - 2) - 1) + b;
-    }
+        function animation(currentTime) {
 
-    requestAnimationFrame(animation);
-});
+            if (start === null) start = currentTime;
 
-document.querySelector('.menu-trigger').addEventListener('click', function() {
-    this.classList.toggle('active');
-    document.querySelector('.header__nav').classList.toggle('is-open');
-});
+            const timeElapsed = currentTime - start;
+            const run = ease(timeElapsed, startPosition, distance, duration);
 
-noticeButton.addEventListener('click', () => {
-    modal.classList.add('is-open');
-});
+            window.scrollTo(0, run);
 
-modalClose.addEventListener('click', () => {
-    modal.classList.remove('is-open');
-});
-modalOverlay.addEventListener('click', () => {
-    modal.classList.remove('is-open');
-});
+            if (timeElapsed < duration) requestAnimationFrame(animation);
+        }
 
-menuTrigger.addEventListener('click', () => {
-    menuTrigger.classList.toggle('active');
-    nav.classList.toggle('is-open');
-    menuOverlay.classList.toggle('active');
-});
+        function ease(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t + b;
+            t--;
+            return -c / 2 * (t * (t - 2) - 1) + b;
+        }
 
-menuOverlay.addEventListener('click', () => {
-    menuTrigger.classList.remove('active');
-    nav.classList.remove('is-open');
-    menuOverlay.classList.remove('active');
-});
+        requestAnimationFrame(animation);
+    });
+
+}
+
+if (noticeButton && modal) {
+
+    noticeButton.addEventListener('click', () => {
+        modal.classList.add('is-open');
+    });
+
+}
+
+if (modalClose && modal) {
+
+    modalClose.addEventListener('click', () => {
+        modal.classList.remove('is-open');
+    });
+
+}
+
+if (modalOverlay && modal) {
+
+    modalOverlay.addEventListener('click', () => {
+        modal.classList.remove('is-open');
+    });
+
+}
+
+if (menuTrigger && nav && menuOverlay) {
+
+    menuTrigger.addEventListener('click', () => {
+        menuTrigger.classList.toggle('active');
+        nav.classList.toggle('is-open');
+        menuOverlay.classList.toggle('active');
+    });
+
+    menuOverlay.addEventListener('click', () => {
+        menuTrigger.classList.remove('active');
+        nav.classList.remove('is-open');
+        menuOverlay.classList.remove('active');
+    });
+
+}
