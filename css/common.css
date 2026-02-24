@@ -48,8 +48,9 @@
 }
 
 .header__nav {
-    display: flex;
-    gap: 28px;
+	display: flex;
+	align-items: center;
+	gap: 28px;
 }
 
 .header__nav a {
@@ -150,6 +151,7 @@
     }
 
     .header__nav {
+        display: flex;
         position: fixed;
         top: 0;
         right: -75%;
