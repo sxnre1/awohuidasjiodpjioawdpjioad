@@ -180,38 +180,50 @@ body {
 
 @media (max-width: 768px) {
 
-	.header {
-		padding: 18px 22px;
-	}
-
-	.header__logo {
-		font-size: 16px;
-	}
-
-	.header__nav {
-		flex-direction: column;
-		gap: 20px;
-	}
-
 	.section {
-		padding: 110px 22px 80px;
+		padding: 95px 20px 70px;
+		text-align: center;
+	}
+
+	.section__content {
+		margin: 0 auto 40px;
 	}
 
 	.section h2 {
-		font-size: 28px;
+		font-size: 26px;
+		text-align: center;
+	}
+
+	.section p {
+		text-align: center;
+		font-size: 14px;
+		line-height: 1.7;
 	}
 
 	.collection__grid {
+
+		display: grid;
 		grid-template-columns: 1fr;
-		gap: 18px;
+		gap: 14px;
+
+		max-width: 100%;
 	}
 
 	.collection__item {
-		border-radius: 16px;
+
+		padding: 26px 18px;
+		border-radius: 14px;
+
+		text-align: center;
+
+		box-shadow:
+			0 6px 18px rgba(0,0,0,0.05),
+			0 1px 3px rgba(0,0,0,0.04);
 	}
 
 	.button {
 		width: 100%;
+		margin-top: 24px;
 	}
 
 	.menu-trigger {
