@@ -6,6 +6,9 @@ const overlay = document.querySelector(".modal__overlay");
 const bgm = document.getElementById("bgm");
 const soundToggle = document.querySelector(".sound-toggle");
 
+const trigger = document.getElementById('menu-trigger');
+const nav = document.getElementById('header-nav');
+
 bgm.volume = 0.07;
 let isPlaying = false;
 
@@ -19,6 +22,11 @@ soundToggle.addEventListener("click", () => {
 				soundToggle.textContent = "SOUND";
 				isPlaying = false;
 		}
+});
+
+trigger.addEventListener('click', () => {
+    trigger.classList.toggle('active');
+    nav.classList.toggle('is-open');
 });
 
 noticeButton.addEventListener("click", () => {
