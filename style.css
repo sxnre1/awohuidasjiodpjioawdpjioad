@@ -511,6 +511,7 @@ body {
         flex-direction: column;
         width: 100%;
         max-width: 300px;
+        align-items: center !important;
     }
 
    .brand-panel {
