@@ -508,36 +508,38 @@ body {
     }
 
     .hero__buttons {
+        display: flex;
         flex-direction: column;
         width: 100%;
         max-width: 300px;
+        margin: 0 auto;
     }
 
-   .brand-panel {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 16px;
-      gap: 8px;
-   }
+    .brand-panel {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 16px;
+        gap: 16px;
+    }
 
-   .brand-title {
+    .brand-title {
       font-size: 16px;
       text-align: center;
-   }
+    }
 
-   .marquee-content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      width: 100%;
-   }
+    .marquee-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        width: 100%;
+    }
 
-   .marquee-content span {
-      font-size: 12px;
-   }
+    .marquee-content span {
+        font-size: 12px;
+    }
 
     .outlet-info {
         padding: 60px 20px;
