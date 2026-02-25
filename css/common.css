@@ -47,6 +47,11 @@
     letter-spacing: 2px;
 }
 
+.header__logo a {
+    color: inherit;
+    text-decoration: none;
+}
+
 .header__nav {
 	display: flex;
 	align-items: center;
