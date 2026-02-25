@@ -111,12 +111,9 @@ body {
 	color: var(--accent);
 }
 
-
-
 .sound-toggle:hover {
 	opacity: 1;
 }
-
 
 @media (max-width: 768px) {
 
