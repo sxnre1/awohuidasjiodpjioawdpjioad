@@ -516,30 +516,22 @@ body {
     }
 
     .brand-panel {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
         padding: 12px 16px;
-        gap: 16px;
+        max-width: 100%;
+        gap: 12px;
     }
 
     .brand-title {
-        font-size: 18px;
-        text-align: center;
-    }
-
-    .marquee-content {
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: center;
-        gap: 16px;
-        width: 100%;
-        animation-duration: 10s;
+        font-size: 16px;
     }
 
     .marquee-content span {
-        font-size: 14px;
+        font-size: 12px;
+    }
+
+    .marquee-content {
+        gap: 12px;
+        animation-duration: 10s;
     }
 
     .outlet-info {
