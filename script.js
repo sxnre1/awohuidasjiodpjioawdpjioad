@@ -3,6 +3,11 @@ const modalClose = document.querySelector(".modal__close");
 const modalOverlay = document.querySelector(".modal__overlay");
 const noticeButton = document.querySelector(".button--primary");
 
+const productModal = document.getElementById("productModal");
+const productClose = productModal.querySelector(".modal__close");
+const productOverlay = productModal.querySelector(".modal__overlay");
+const mobileBtn = document.querySelector(".mobile-button");
+
 const bgm = document.getElementById("bgm");
 const soundToggle = document.querySelector(".sound-toggle");
 
@@ -92,6 +97,24 @@ if (modalOverlay && modal) {
         modal.classList.remove('is-open');
     });
 
+}
+
+if (mobileBtn && productModal) {
+    mobileBtn.addEventListener('click', () => {
+        productModal.classList.add('is-open');
+    });
+}
+
+if (productClose && productModal) {
+    productClose.addEventListener('click', () => {
+        productModal.classList.remove('is-open');
+    });
+}
+
+if (productOverlay && productModal) {
+    productOverlay.addEventListener('click', () => {
+        productModal.classList.remove('is-open');
+    });
 }
 
 if (menuTrigger && nav) {
