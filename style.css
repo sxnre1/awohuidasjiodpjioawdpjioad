@@ -406,9 +406,6 @@ body {
 }
 
 @media (max-width: 768px) {
-}
-
-@media (max-width: 768px) {
     body {
         font-size: 14px;
         line-height: 1.5;
@@ -517,16 +514,29 @@ body {
     }
 
    .brand-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       padding: 12px 16px;
+      gap: 8px;
    }
 
    .brand-title {
       font-size: 16px;
+      text-align: center;
+   }
+
+   .marquee-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
    }
 
    .marquee-content span {
       font-size: 12px;
-      gap: 12px;
    }
 
     .outlet-info {
