@@ -523,13 +523,20 @@ body {
     .mobile-button {
         display: block;
         margin-top: 12px;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 8px;
-        background: var(--accent);
-        color: #fff;
-        border: none;
+
+        border: 1px solid var(--accent);
+        background: transparent;
+        padding: 14px 32px;
+        font-size: 14px;
         cursor: pointer;
+        transition: 0.25s;
+        border-radius: 8px;
+        color: var(--accent);
+    }
+
+    .mobile-button:hover {
+        background: var(--accent);
+        color: white;
     }
 
     .outlet-info {
