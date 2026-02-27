@@ -1,0 +1,80 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Pretendard', sans-serif; /* 깔끔한 폰트 권장 */
+    background-color: #ffffff;
+}
+
+.error-wrapper {
+    text-align: center;
+    /* 전체 콘텐츠를 중앙에 고정 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 1. 원 크기 축소 및 느낌표 위치 조정 */
+.icon-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;  /* 원 크기를 줄였습니다 */
+    height: 60px;
+    border: 1.5px solid #000000; /* 선 굵기 조절 */
+    border-radius: 50%;
+    margin-bottom: 25px;
+}
+
+.exclamation {
+    font-size: 35px; /* 느낌표 크기 축소 */
+    font-weight: 300;
+    color: #000000;
+    transform: translateY(-2px); /* 느낌표를 미세하게 위로 올림 */
+}
+
+/* 2. 중앙 텍스트 스타일 */
+.error-message {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333333;
+    margin: 0; /* 중앙 정렬을 위해 기본 마진 제거 */
+}
+
+/* 3. 버튼 위치를 더 아래로 내림 */
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 60px; /* 텍스트와 버튼 사이 간격을 넓힘 */
+}
+
+.btn {
+    width: 140px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.btn-main {
+    background-color: #111111;
+    color: #ffffff;
+    border: 1px solid #111111;
+}
+
+.btn-back {
+    background-color: #ffffff;
+    color: #555555;
+    border: 1px solid #dddddd;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
