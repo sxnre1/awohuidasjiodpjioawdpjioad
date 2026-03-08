@@ -1,6 +1,10 @@
 import jwt from "jsonwebtoken";
 
-const ADMIN = { username: "admin@wonhee-mkt.shop", password: "hfNx5@LR#(#*k7f" };
+const ADMIN = { 
+    username: process.env.ADMIN_USER || "", 
+    password: process.env.ADMIN_PASS || "" 
+};
+
 const SECRET_KEY = process.env.JWT_SECRET || "supersecretkey";
 
 export default async function handler(req, res) {
@@ -15,5 +19,6 @@ export default async function handler(req, res) {
             return res.status(401).json({ status: "fail", message: "아이디 또는 비밀번호가 잘못되었습니다." });
         }
     }
+
     res.status(405).end();
 }
