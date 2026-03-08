@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 - Wonhee Service</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="left-section">
+        <div class="logo">Wonhee Service</div>
+        <div class="background-lines">
+            <div class="line"><div class="meteor"></div></div>
+            <div class="line"><div class="meteor"></div></div>
+            <div class="line"><div class="meteor"></div></div>
+            <div class="line"><div class="meteor"></div></div>
+            <div class="line"><div class="meteor"></div></div>
+        </div>
+        <div class="quote">
+            "Never underestimate the power of human stupidity."
+            <span>Robert A. Heinlein</span>
+        </div>
+    </div>
+
+    <div class="right-section">
+
+        <div class="login-box">
+            <div class="login-header">
+                <h1>로그인 👋</h1>
+                <p>돌아오신 것을 환영해요.</p>
+            </div>
+            
+            <div class="input-group">
+                <label>아이디</label>
+                <input type="text" id="id" placeholder="ID를 입력해주세요.">
+            </div>
+            
+            <div class="input-group">
+                <label>비밀번호</label>
+                <div class="pw-wrapper">
+                    <input type="password" id="pw" placeholder="비밀번호를 입력해주세요.">
+                    <i class="fa-regular fa-eye-slash"></i>
+                </div>
+            </div>
+
+            <button class="login-btn" onclick="login()">로그인하기</button>
+
+            <div class="footer-links">
+                웹사이트 방문을 원하시나요? <a href="https://wonhee-mkt.shop/">방문하기</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: false,
+    background: '#FFFFFF',
+    width: 'auto',
+    padding: '1.25rem 1.5rem',
+    showClass: {
+        popup: 'toast-slide-up' 
+    },
+    hideClass: {
+        popup: 'toast-slide-down'
+    },
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+});
+
+function showToast(title, message = "") {
+    Toast.fire({
+        html: `
+            <div class="toast-container">
+                <div class="toast-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="black" stroke-width="2.5"/>
+                        <path d="M12 7V13" stroke="black" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="12" cy="16.5" r="1.25" fill="black"/>
+                    </svg>
+                </div>
+                <div class="toast-content">
+                    <div class="toast-title">${title}</div>
+                    <div class="toast-message">${message}</div>
+                </div>
+            </div>
+        `
+    });
+}
+
+function login() {
+    var id = document.getElementById('id').value;
+    var pw = document.getElementById('pw').value;
+
+    if (id == "" || pw == "") {
+        showToast('입력 오류', '아이디와 비밀번호를 모두 입력해주세요.');
+    } else {
+        $.ajax({
+            url: "/login",
+            type: "post",
+            data: { email: id, password: pw },
+            dataType: "json"
+        }).done(function (data) {
+            if (data.status === "ok") {
+                showToast('로그인 성공', '대시보드로 이동합니다.');
+                setTimeout(() => { window.location.href = '/dashboard'; }, 1000);
+            } else {
+                showToast('로그인 실패', data.message);
+            }
+        }).fail(function() {
+            showToast('연결 오류', '인터넷 연결을 확인하고 다시 시도해주세요.');
+        });
+    }
+}
+
+$(document).ready(function () {
+    $(document).bind('keydown', function (e) {
+        if (e.keyCode == 13) {
+            login();
+            e.preventDefault();
+            e.returnValue = false;
+        }
+    });
+});
+
+const container = document.querySelector(".background-lines");
+
+for(let i = 0; i < 30; i++){
+
+    const line = document.createElement("div");
+    line.className = "line";
+
+    const meteor = document.createElement("div");
+    meteor.className = "meteor";
+
+    line.appendChild(meteor);
+
+    line.style.top = Math.random() * 100 + "%";
+
+    line.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+    line.style.animationDelay = (-Math.random() * 10) + "s";
+
+    container.appendChild(line);
+}
+
+</script>
+</body>
+</html>
