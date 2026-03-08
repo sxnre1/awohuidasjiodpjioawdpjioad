@@ -102,23 +102,25 @@ function login() {
     var id = document.getElementById('id').value;
     var pw = document.getElementById('pw').value;
 
-    if (id == "" || pw == "") {
-        showToast('입력 오류', '아이디와 비밀번호를 모두 입력해주세요.');
+    if (!id || !pw) {
+        showToast('아이디와 비밀번호를 입력해주세요.', 'error');
     } else {
         $.ajax({
-            url: "/login",
-            type: "post",
-            data: { email: id, password: pw },
+            url: "/api/admin-login",
+            type: "POST",
+            data: JSON.stringify({ username: id, password: pw }),
+            contentType: "application/json",
             dataType: "json"
         }).done(function (data) {
             if (data.status === "ok") {
-                showToast('로그인 성공', '대시보드로 이동합니다.');
-                setTimeout(() => { window.location.href = '/dashboard'; }, 1000);
+                localStorage.setItem("admin_token", data.token);
+                showToast('로그인 성공!', 'success');
+                setTimeout(() => { window.location.href = '/pages/admin_panel.html'; }, 1000);
             } else {
-                showToast('로그인 실패', data.message);
+                showToast(data.message || '로그인 실패', 'error');
             }
         }).fail(function() {
-            showToast('연결 오류', '인터넷 연결을 확인하고 다시 시도해주세요.');
+            showToast('연결 오류', '서버와 연결할 수 없습니다.', 'error');
         });
     }
 }
