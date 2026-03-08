@@ -2,17 +2,51 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>관리자 패널</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>관리자 패널 - Wonhee Market</title>
+<link rel="stylesheet" href="../css/admin_panel.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script src="../script.js"></script>
 </head>
 <body>
+
 <h1>관리자 패널</h1>
 <button id="logoutBtn">로그아웃</button>
 
 <div id="panelContent">
-    <p>이곳에서 충전 승인, 공지 작성 등 관리자 기능 구현 가능</p>
+
+    <section id="operatingStatusSection">
+        <h2>운영상태</h2>
+        <select id="operatingStatus">
+            <option value="정상영업">정상영업</option>
+            <option value="휴업">휴업</option>
+        </select>
+        <button id="saveStatusBtn">저장</button>
+    </section>
+
+    <section id="noticeSection">
+        <h2>공지사항 작성 / 수정</h2>
+        <textarea id="noticeText" rows="4" placeholder="공지사항 내용을 입력하세요..."></textarea>
+        <button id="saveNoticeBtn">공지 저장</button>
+    </section>
+
+    <section id="productSection">
+        <h2>상품 관리</h2>
+        <input type="text" id="newProduct" placeholder="상품명 입력">
+        <button id="addProductBtn">추가</button>
+        <table id="productTable">
+            <thead>
+                <tr>
+                    <th>상품명</th>
+                    <th>순서</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </section>
+
 </div>
 
 <script>
@@ -22,16 +56,6 @@ async function verifyAccess(){
         window.location.href = "/pages/login.html";
         return;
     }
-
-    try {
-        const res = await fetch("/api/admin-login", {
-            method: "POST",
-            body: JSON.stringify({ token }),
-            headers: { "Content-Type": "application/json" }
-        });
-    } catch(e){
-        window.location.href = "/pages/login.html";
-    }
 }
 verifyAccess();
 
@@ -39,7 +63,82 @@ $('#logoutBtn').click(function(){
     localStorage.removeItem("admin_token");
     window.location.href = "/pages/login.html";
 });
+
+$('#saveStatusBtn').click(function(){
+    const status = $('#operatingStatus').val();
+    localStorage.setItem('operating_status', status);
+    Swal.fire({ icon:'success', title:'운영상태 저장', text: `현재 상태: ${status}` });
+});
+
+$('#saveNoticeBtn').click(function(){
+    const notice = $('#noticeText').val().trim();
+    if(!notice){
+        Swal.fire({ icon:'error', title:'오류', text: '공지사항 내용을 입력하세요.' });
+        return;
+    }
+    localStorage.setItem('notice_text', notice);
+    Swal.fire({ icon:'success', title:'공지 저장', text:'공지사항이 업데이트 되었습니다.' });
+});
+
+let products = JSON.parse(localStorage.getItem('products') || '[]');
+
+function renderProducts(){
+    const tbody = $('#productTable tbody');
+    tbody.empty();
+    products.forEach((p, index) => {
+        tbody.append(`
+            <tr>
+                <td>${p}</td>
+                <td>
+                    <button class="upBtn" data-index="${index}">▲</button>
+                    <button class="downBtn" data-index="${index}">▼</button>
+                </td>
+                <td><button class="deleteBtn" data-index="${index}">삭제</button></td>
+            </tr>
+        `);
+    });
+}
+renderProducts();
+
+$('#addProductBtn').click(function(){
+    const name = $('#newProduct').val().trim();
+    if(!name){
+        Swal.fire({ icon:'error', title:'오류', text:'상품명을 입력하세요.' });
+        return;
+    }
+    products.push(name);
+    localStorage.setItem('products', JSON.stringify(products));
+    $('#newProduct').val('');
+    renderProducts();
+});
+
+$(document).on('click', '.deleteBtn', function(){
+    const index = $(this).data('index');
+    products.splice(index,1);
+    localStorage.setItem('products', JSON.stringify(products));
+    renderProducts();
+});
+
+$(document).on('click', '.upBtn', function(){
+    const index = $(this).data('index');
+    if(index === 0) return;
+    [products[index-1], products[index]] = [products[index], products[index-1]];
+    localStorage.setItem('products', JSON.stringify(products));
+    renderProducts();
+});
+$(document).on('click', '.downBtn', function(){
+    const index = $(this).data('index');
+    if(index === products.length-1) return;
+    [products[index+1], products[index]] = [products[index], products[index+1]];
+    localStorage.setItem('products', JSON.stringify(products));
+    renderProducts();
+});
+
+$(document).ready(function(){
+    $('#noticeText').val(localStorage.getItem('notice_text') || '');
+    $('#operatingStatus').val(localStorage.getItem('operating_status') || '정상영업');
+});
 </script>
-<script src="../script.js"></script>
+
 </body>
 </html>

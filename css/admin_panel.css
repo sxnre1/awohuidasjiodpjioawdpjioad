@@ -1,0 +1,130 @@
+body {
+			font-family: 'Inter', sans-serif;
+			background-color: #0b0b0b;
+			color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+h1 {
+			text-align: center;
+			margin-top: 30px;
+			font-size: 2.5rem;
+			color: #ffffff;
+			text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+		}
+
+#logoutBtn {
+			display: block;
+			margin: 20px auto;
+			padding: 10px 25px;
+			background-color: #ff4d4f;
+			color: #fff;
+			border: none;
+			border-radius: 8px;
+			cursor: pointer;
+			font-size: 1rem;
+			transition: background 0.2s;
+		}
+
+#logoutBtn:hover {
+			background-color: #e04344;
+		}
+
+#panelContent {
+			max-width: 1000px;
+			margin: 30px auto;
+			padding: 25px;
+			background-color: #1c1c1c;
+			border-radius: 12px;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+		}
+
+#panelContent section {
+			margin-bottom: 30px;
+			padding: 15px;
+			background-color: #2a2a2a;
+			border-radius: 8px;
+		}
+
+#panelContent h2 {
+			margin-top: 0;
+			font-size: 1.5rem;
+			color: #ffd166;
+		}
+
+#panelContent input, 
+#panelContent textarea, 
+#panelContent select {
+			width: 100%;
+			padding: 8px 12px;
+			margin-top: 5px;
+			margin-bottom: 10px;
+			border: none;
+			border-radius: 6px;
+			background-color: #121212;
+			color: #f5f5f5;
+			font-size: 1rem;
+			box-sizing: border-box;
+		}
+
+#panelContent textarea {
+			resize: vertical;
+		}
+
+#panelContent button {
+			padding: 8px 20px;
+			background-color: #06d6a0;
+			color: #0b0b0b;
+			border: none;
+			border-radius: 6px;
+			cursor: pointer;
+			font-weight: 600;
+			transition: background 0.2s;
+			margin-top: 5px;
+		}
+
+#panelContent button:hover {
+			background-color: #05b886;
+		}
+
+table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-top: 10px;
+		}
+
+table th, table td {
+			padding: 12px;
+			text-align: left;
+			border-bottom: 1px solid #333;
+		}
+
+table th {
+			background-color: #1a1a1a;
+			color: #ffd166;
+		}
+
+table tr:hover {
+			background-color: #2e2e2e;
+		}
+
+@media screen and (max-width: 768px) {
+			#panelContent {
+				padding: 15px;
+				margin: 20px;
+			}
+			h1 {
+				font-size: 2rem;
+			}
+			#panelContent h2 {
+				font-size: 1.2rem;
+			}
+			#panelContent input, #panelContent textarea, #panelContent select {
+				font-size: 0.95rem;
+			}
+			#panelContent button {
+				font-size: 0.95rem;
+				padding: 6px 15px;
+			}
+		}
